@@ -11,7 +11,8 @@
         "${workspaceFolder}/bt_tutorial01/include/**",
         "${workspaceFolder}/bt_tutorial02/include/**",
         "${workspaceFolder}/bt_tutorial03/include/**",
-        "${workspaceFolder}/bt_tutorial04/include/**"
+        "${workspaceFolder}/bt_tutorial04/include/**",
+        "${workspaceFolder}/bt_tutorial05/include/**"
       ],
       "name": "ROS",
       "intelliSenseMode": "clang-x64",

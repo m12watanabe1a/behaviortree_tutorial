@@ -1,0 +1,36 @@
+<root main_tree_to_execute="MainTree">
+
+    <BehaviorTree ID="DoorClosed">
+        <Sequence name="door_closed_sequence">
+            <Inverter>
+                <IsDoorOpen />
+            </Inverter>
+            <RetryUntilSuccessful num_attempts="4">
+                <SubTree ID="DoorLocked" />
+            </RetryUntilSuccessful>
+            <PassThroughDoor />
+        </Sequence>
+    </BehaviorTree>
+
+    <BehaviorTree ID="DoorLocked">
+        <Sequence name="door_locked_sequence">
+            <IsDoorLocked />
+            <RetryUntilSuccessful num_attempts="4">
+                <UnlockDoor />
+            </RetryUntilSuccessful>
+            <OpenDoor />
+        </Sequence>
+    </BehaviorTree>
+
+    <BehaviorTree ID="MainTree">
+        <Fallback name="root_Fallback">
+            <Sequence name="door_open_sequence">
+                <IsDoorOpen />
+                <PassThroughDoor />
+            </Sequence>
+            <SubTree ID="DoorClosed" />
+            <PassThroughWindow />
+        </Fallback>
+    </BehaviorTree>
+
+</root>
