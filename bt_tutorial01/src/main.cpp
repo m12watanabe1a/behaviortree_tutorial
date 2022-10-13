@@ -1,50 +1,10 @@
 #include <behaviortree_cpp_v3/bt_factory.h>
 #include <ament_index_cpp/get_package_share_directory.hpp>
 
-class ApproachObject : public BT::SyncActionNode
-{
-public:
-  ApproachObject(const std::string & name)
-  : BT::SyncActionNode(name, {})
-  {
-  }
+#include "bt_tutorial01/sc_check_battery.hpp"
+#include "bt_tutorial01/nd_approach_object.hpp"
+#include "bt_tutorial01/gripper_interface.hpp"
 
-  BT::NodeStatus tick() override
-  {
-    std::cout << "ApproachObject: " << this->name() << std::endl;
-    return BT::NodeStatus::SUCCESS;
-  }
-};
-
-BT::NodeStatus CheckBattery()
-{
-  std::cout << "[ Battery: OK ]" << std::endl;
-  return BT::NodeStatus::SUCCESS;
-}
-
-class GripperInterface
-{
-private:
-  bool open_;
-
-public:
-  GripperInterface()
-  : open_(false) {}
-
-  BT::NodeStatus open()
-  {
-    this->open_ = true;
-    std::cout << "GripperInterface::open" << std::endl;
-    return BT::NodeStatus::SUCCESS;
-  }
-
-  BT::NodeStatus close()
-  {
-    std::cout << "GripperInterface::close" << std::endl;
-    this->open_ = false;
-    return BT::NodeStatus::SUCCESS;
-  }
-};
 
 int main()
 {

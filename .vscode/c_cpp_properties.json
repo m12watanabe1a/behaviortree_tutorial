@@ -7,7 +7,11 @@
       },
       "includePath": [
         "/opt/ros/galactic/include/**",
-        "/usr/include/**"
+        "/usr/include/**",
+        "${workspaceFolder}/bt_tutorial01/include/**",
+        "${workspaceFolder}/bt_tutorial02/include/**",
+        "${workspaceFolder}/bt_tutorial03/include/**",
+        "${workspaceFolder}/bt_tutorial04/include/**"
       ],
       "name": "ROS",
       "intelliSenseMode": "clang-x64",
