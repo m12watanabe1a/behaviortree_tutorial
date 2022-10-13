@@ -5,6 +5,7 @@
 #include <behaviortree_cpp_v3/loggers/bt_cout_logger.h>
 #include <behaviortree_cpp_v3/loggers/bt_file_logger.h>
 #include <behaviortree_cpp_v3/loggers/bt_minitrace_logger.h>
+#include <behaviortree_cpp_v3/loggers/bt_zmq_publisher.h>
 // ------------------------------------------------------------
 
 #include "bt_tutorial05/crossdoor_nodes.hpp"
@@ -25,10 +26,8 @@ int main(int argc, char ** argv)
   BT::FileLogger logger_file(tree, "bt_trace.fbl");
   BT::MinitraceLogger logger_minitrace(tree, "bt_trace.json");
 
-#ifdef ZMQ_FOUND
   // This logger publish status changes using ZeroMQ. Used by Groot
-  PublisherZMQ publisher_zmq(tree);
-#endif
+  BT::PublisherZMQ publisher_zmq(tree);
 
   BT::printTreeRecursively(tree.rootNode());
 
