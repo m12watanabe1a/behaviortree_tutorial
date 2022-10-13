@@ -104,7 +104,10 @@ int main()
     }
   }
 
-  tree.tickRoot();
+  while (tree.tickRoot() == BT::NodeStatus::RUNNING) {
+    std::this_thread::sleep_for(
+      std::chrono::milliseconds(10));
+  }
 
   return EXIT_SUCCESS;
 }
